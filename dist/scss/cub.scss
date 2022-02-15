@@ -1,0 +1,499 @@
+/**
+ * cub.scss
+ */
+
+body {
+
+    &.past-header {}
+
+}
+
+.all {
+
+    min-height: 100vh;
+
+    & > header {
+
+        position: relative;
+		z-index: 1020;
+
+        & > strong.logo {
+
+            display: block;            
+
+        }
+
+        & > nav {
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: flex;
+            height: inherit;
+            
+            /**
+             * <nav> expects at least one child <ul> (.primary, .user, ...)
+             */
+    
+            justify-content: space-between;
+    
+            & > ul {
+    
+                display: flex;
+                height: inherit;
+    
+                & > li {
+    
+                    position: relative;
+                    height: inherit;
+    
+                    & > a {
+    
+                        display: flex;
+                        height: inherit;
+                        align-items: center;
+    
+                        i {
+                            display: inline-block;
+                            text-align: center;
+                        }
+    
+                    }
+    
+                    ul {
+    
+                        display: none;
+                        position: absolute;
+                        left: 0;
+    
+                    }
+    
+                    &:hover {
+    
+                        ul {
+    
+                            display: block;
+    
+                        }
+    
+                    }
+    
+                }
+    
+                /**
+                 * .primary
+                 */
+    
+                &.primary {
+    
+                }
+    
+                /**
+                 * .user
+                 */
+    
+                 &.user {
+    
+                    & > li {
+    
+                        &.log-out {
+                            
+                        }
+    
+                    }
+                    
+                }
+                
+    
+            }
+    
+        }
+
+    }
+
+    /**
+     * Our <main> can contain a direct <form>
+     */
+
+    & > main ,
+    & > main > form {
+
+        & > header {
+
+            .has-h {
+
+            }
+
+            .has-tools {
+
+            }
+
+            body.past-header & {
+
+            }
+
+        }
+
+        section {
+
+            & > header {
+
+            }
+
+            & > .body {
+
+                /**
+                 * Rare case but it can happen.
+                 */
+
+                & > header {
+
+                }
+
+            }
+
+            & > footer {
+
+            }
+
+            /**
+             * Contectual is-* classes
+             */
+
+            &.is-table {
+
+            }
+
+            &.is-editable {
+
+            }
+
+            /**
+             * Use is-filter where your section contains <inputs>, that remain uneditable (e.g. to filter)
+             */
+
+            &.is-filter {
+
+            }
+
+            &.is-empty {
+
+            }
+
+        }
+
+    }
+
+    & > footer {
+
+    }
+
+}
+
+#loadingInline {
+
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    opacity: 0;
+    color: $primary;
+
+    &.active {
+
+        opacity: 1;
+
+    }
+
+}
+
+.has-h {
+
+}
+
+.has-tools {
+
+    display: flex;
+    justify-content: flex-end;
+
+    nav {
+
+        display: flex;
+        margin-left: -.5rem;
+        margin-right: -.5rem;
+
+        .btn-toolbar {
+
+            flex-wrap: nowrap;
+            align-items: center;
+
+            .btn-group {
+
+                margin-left: .5rem;
+                margin-right: .5rem;
+
+                a {
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    
+}
+
+header {
+
+    .has-h {
+
+        @extend .col;
+
+        @extend .order-2;
+        @extend .order-md-1;
+
+    }
+
+    .has-tools {
+
+        @extend .col-auto;
+
+        @extend .order-1;
+        @extend .order-md-2;
+
+        width: 100%;
+        padding-bottom: 1rem;
+
+        justify-content: space-between;
+
+        @media (min-width: 768px) {
+
+            width: unset;
+            padding-bottom: 0;
+
+        }
+        
+    }
+
+    // If no other child apart from div.has-tools is present, set as 100%
+
+    .row .has-tools:only-child {
+
+        @media (min-width: 768px) {
+
+            width: 100%;
+
+        }
+
+    }
+
+
+}
+
+table {
+
+    &.dataTable {
+
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+
+    }
+
+    th.has-tools ,
+    td.has-tools {
+
+        padding-right: 0;
+
+    }
+
+}
+
+ul.listable {
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    & > li {
+
+        & > div {
+
+            display: flex;
+            justify-content: space-between;
+            padding: $table-cell-padding;
+
+            &:not(.has-tools) {
+
+                align-items: center;
+
+            }
+
+        }
+
+    }
+
+}
+
+.form-group {
+
+    & > label {
+
+    }
+
+    & > .field {
+
+    }
+
+    & > .description {
+
+    }
+
+    &.row {
+
+        & > label {
+
+            @extend .col-form-label;
+            margin-bottom: .5rem;
+
+            @media (min-width: 768px) {
+
+                margin-bottom: 0;
+
+            }
+
+        }
+
+    }
+
+}
+
+.modal {
+
+    .modal-content {
+
+        header {
+
+            &.modal-header {}
+
+        }
+
+        .body {
+
+            .modal-body {
+            }
+
+        }
+
+        footer {
+
+            &.modal-footer {}
+
+        }
+
+    }
+
+}
+
+.modal-backdrop {
+
+}
+
+.dropdown-divider {
+    margin: 0;
+}
+
+.btn {
+
+    &.btn-icon {
+
+        & > i {
+
+        }
+
+    }
+
+    &.btn-has-icon {
+
+        white-space: nowrap;
+
+        & > i {
+
+        }
+
+        & > span {
+
+
+            
+        }
+
+    }
+
+    &:not(.btn-icon) {}
+
+}
+
+nav {
+
+    h6 {
+
+    }
+
+    ul {
+
+        li {
+
+            a {
+
+                position: relative;
+
+                i.i {
+
+                    position: absolute;
+                    top: -.5rem;
+                    right: -.5rem;
+                    width: 1rem;
+                    height: 1rem;
+                    border-radius: .5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-style: normal;
+                    font-size: 66%;
+                    color: white;
+                    background-color: $primary;
+                    z-index: 1045;
+
+                }
+
+            }
+
+            &.is-pill {
+
+                margin-left: -1rem;
+                margin-right: -1rem;
+
+                a {
+
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+
+                    i.i {
+
+                        top: 25%;
+                        right: 1rem;
+
+                    }
+
+                }
+
+
+            }
+
+        }
+
+    }
+
+}
